@@ -4,10 +4,10 @@
 
 # Markdown Viewer (MDV)
 
-🚀 A blazingly fast, lightweight Markdown viewer built with FLTK and modern C++
+🚀 A blazingly fast, Notepad-like Markdown viewer for Windows
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-lightgrey)](https://github.com/mikl0s/MDV)
+[![Platform](https://img.shields.io/badge/platform-Windows-blue)](https://github.com/mikl0s/MDV)
 [![C++](https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B)](https://en.wikipedia.org/wiki/C%2B%2B17)
 [![FLTK](https://img.shields.io/badge/FLTK-1.4.1-orange)](https://www.fltk.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/mikl0s/MDV/pulls)
@@ -20,50 +20,38 @@
 
 ## ✨ Features
 
-- 🎯 **Minimalistic & Fast** - Starts up as quick as Notepad
-- 🎨 **Dark & Light Themes** - Easy on your eyes, day or night
-- 🔤 **Custom Fonts** - Bundled with FiraMono, download more from Nerd Fonts
-- 📑 **GitHub Flavored Markdown** - Full GFM support including tables and code blocks
-- 🖨️ **PDF Export** - Generate beautiful PDFs with a single click
-- 🚀 **Cross-Platform** - Runs natively on Windows and Linux
-- 💡 **Memory Efficient** - Minimal resource usage
+- 🎯 **Fast as Notepad** - Instant startup, minimal memory usage
+- 🎨 **Windows-native Themes** - Follows your system theme
+- 🔤 **Custom Fonts** - Bundled with FiraMono, use any system font
+- 📑 **GitHub Flavored Markdown** - Tables, code blocks, and more
+- 🖨️ **PDF Export** - Generate beautiful PDFs with a click
+- 💡 **Ultra Lightweight** - Smaller than a typical web browser
+- 🪟 **Windows Integration** - Native menus and dialogs
 
 ## 🚀 Quick Start
 
-### Windows
 ```powershell
 # Download the latest release
 winget install MDV
 
 # Or build from source
-cmake -B build -S .
+cmake -B build -S . -G "Visual Studio 17 2022"
 cmake --build build --config Release
-```
-
-### Linux
-```bash
-# Ubuntu/Debian
-sudo apt install mdv
-
-# Build from source
-mkdir build && cd build
-cmake ..
-make -j$(nproc)
 ```
 
 ## 🎨 Themes
 
-MDV comes with two carefully crafted themes:
+MDV follows your Windows theme settings:
 
 <div align="center">
 <table>
 <tr>
 <td align="center">
-<strong>Dark Theme (Default)</strong><br>
+<strong>Dark Theme (Windows Dark)</strong><br>
 <img src="docs/assets/dark-theme.png" width="400"/>
 </td>
 <td align="center">
-<strong>Light Theme</strong><br>
+<strong>Light Theme (Windows Light)</strong><br>
 <img src="docs/assets/light-theme.png" width="400"/>
 </td>
 </tr>
@@ -74,10 +62,10 @@ MDV comes with two carefully crafted themes:
 
 ```mermaid
 graph TD
-    A[FLTK GUI] --> B[Markdown Parser]
-    B --> C[HTML Renderer]
+    A[Win32 GUI] --> B[Markdown Parser]
+    B --> C[Native Renderer]
     A --> D[Font Manager]
-    D --> E[libcurl Downloader]
+    D --> E[Windows Font API]
     A --> F[PDF Exporter]
     style A fill:#007ACC,color:white
     style B fill:#1E1E1E,color:white
@@ -91,31 +79,22 @@ graph TD
 
 ### Prerequisites
 
+- Visual Studio 2022 or later
 - CMake 3.15+
-- C++17 compatible compiler
-- FLTK 1.4.1+
-- libcurl
-- cmark-gfm or md4c
+- Windows 10/11 SDK
 
 ### Build Steps
 
 1. Clone the repository
-```bash
+```powershell
 git clone git@github.com:mikl0s/MDV.git
 cd MDV
 ```
 
-2. Create build directory
-```bash
-mkdir build && cd build
-```
-
-3. Configure and build
-```bash
-cmake ..
-make -j$(nproc)  # Linux
-# or
-cmake --build . --config Release  # Windows
+2. Configure and build
+```powershell
+cmake -B build -S . -G "Visual Studio 17 2022"
+cmake --build build --config Release
 ```
 
 ## 📖 Usage
@@ -123,7 +102,7 @@ cmake --build . --config Release  # Windows
 1. Launch MDV
 2. Open a Markdown file via File → Open or drag & drop
 3. Use the menu to:
-   - Switch themes (Settings → Theme)
+   - Switch themes (follows Windows theme)
    - Change fonts (Settings → Font)
    - Export to PDF (File → Export to PDF)
 

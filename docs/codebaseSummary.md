@@ -13,64 +13,66 @@ MDV/
 ├── fonts/                   # Font resources
 │   └── FiraMono/           # Bundled FiraMono font
 │
-├── src/                    # Source code (to be implemented)
+├── src/                    # Source code
 │   ├── core/              # Core functionality
-│   ├── gui/               # FLTK-based UI components
+│   ├── gui/               # Win32-optimized UI components
+│   │   ├── MainWindow.hpp # Main window header
+│   │   └── MainWindow.cpp # Main window implementation
 │   ├── markdown/          # Markdown processing
 │   ├── pdf/               # PDF export functionality
-│   └── utils/             # Utility functions
+│   └── utils/             # Windows utility functions
 │
-└── CMakeLists.txt         # Main CMake configuration (to be implemented)
+└── CMakeLists.txt         # MSVC build configuration
 ```
 
 ## Key Components and Their Interactions
 
-### Core Components (Planned)
+### Core Components
 1. **MainWindow** (gui/)
-   - Primary FLTK window
-   - Manages menu bar and layout
-   - Coordinates between components
+   - Win32-optimized FLTK window
+   - Native Windows menubar
+   - Windows theme integration
 
 2. **MarkdownRenderer** (markdown/)
-   - Interfaces with cmark-gfm
-   - Converts Markdown to displayable format
-   - Handles theme application to content
+   - Interfaces with md4c
+   - Fast markdown parsing
+   - Windows-optimized display
 
 3. **FontManager** (utils/)
-   - Manages font directory
-   - Handles font downloads and installation
-   - Provides font selection interface
+   - Windows font directory scanning
+   - User space font installation
+   - System font integration
 
 4. **PDFExporter** (pdf/)
-   - Converts rendered content to PDF
-   - Applies current theme to output
-   - Manages export process
+   - Windows-styled PDF generation
+   - Theme-aware output
+   - Fast export process
 
 5. **ConfigManager** (core/)
-   - Handles settings persistence
-   - Manages user preferences
-   - Coordinates theme changes
+   - Windows registry/AppData config
+   - Windows theme detection
+   - Settings persistence
 
 ## Data Flow
 1. User opens Markdown file → MainWindow → MarkdownRenderer → Display
-2. Theme change → ConfigManager → MainWindow → MarkdownRenderer → Refresh
-3. Font download → FontManager → libcurl → minizip → Refresh
+2. Theme change → ConfigManager → Windows theme API → Refresh
+3. Font management → FontManager → Windows Font API → Refresh
 4. PDF export → MarkdownRenderer → PDFExporter → Save file
 
 ## External Dependencies
-- FLTK: GUI framework
-- cmark-gfm: Markdown processing
-- libcurl: Network operations
-- libharu: PDF generation
-- minizip: Font package extraction
+- FLTK: Win32-optimized GUI (Integrated)
+- md4c: Lightweight Markdown processing (Pending)
+- libharu: PDF generation (Pending)
 
 ## Recent Changes
-- Initial project setup
-- Documentation structure established
-- FiraMono font bundled
+- Removed cross-platform support
+- Optimized for Windows performance
+- Simplified dependency structure
+- Enhanced Windows integration
+- Streamlined build process
 
 ## Development Status
-Project is in initial setup phase. Core implementation has not yet begun.
+Project is being refocused for Windows-only support with emphasis on matching Notepad's performance characteristics. Build system is optimized for MSVC and Windows development.
 
 ## User Feedback Integration
-No user feedback yet as project is in initial phase.
+No user feedback yet as project is in Windows optimization phase.

@@ -3,32 +3,23 @@
 ## Core Technologies
 
 ### GUI Framework
-- **FLTK (Fast Light Toolkit)**
+- **Win32 API with FLTK**
   - Version: Latest stable
-  - Purpose: Cross-platform GUI implementation
+  - Purpose: Native Windows GUI implementation
   - Chosen for: 
     - Lightweight footprint
     - Fast startup time
     - Minimal dependencies
-    - Native look and feel
+    - Native Windows look and feel
 
 ### Markdown Processing
-- **cmark-gfm**
-  - Purpose: GitHub Flavored Markdown parsing and rendering
+- **md4c**
+  - Purpose: Markdown parsing and rendering
   - Chosen for:
+    - Lightweight and fast
+    - Pure C implementation
+    - Small footprint
     - GitHub-compatible rendering
-    - Active maintenance
-    - C/C++ native implementation
-    - Performance and reliability
-
-### Network Operations
-- **libcurl**
-  - Purpose: Font downloads and network operations
-  - Features used:
-    - HTTPS support
-    - Progress monitoring
-    - Async downloads
-    - Error handling
 
 ### PDF Generation
 - **libharu**
@@ -36,47 +27,32 @@
   - Chosen for:
     - Pure C implementation
     - Small footprint
-    - Cross-platform support
+    - Windows-optimized
     - Text and graphics capabilities
-
-### Compression
-- **minizip**
-  - Purpose: Font package extraction
-  - Features used:
-    - ZIP file handling
-    - Cross-platform support
-    - Simple integration
 
 ## Build System
 - **CMake**
-  - Purpose: Cross-platform build configuration
+  - Purpose: Windows build configuration
   - Features used:
+    - MSVC integration
     - External dependency management
-    - Platform-specific configurations
     - Installation rules
 
 ## Development Environment
-### Windows
-- Compiler: MSVC or MinGW-w64
+- Compiler: MSVC
 - Build tools: CMake, Visual Studio or VSCode
-
-### Linux
-- Compiler: GCC or Clang
-- Build tools: CMake, Make
-- Package formats: .deb, .rpm, or AppImage
+- Target: Windows 10/11 x64
 
 ## Configuration
 - Format: JSON
-- Storage:
-  - Windows: %APPDATA%/MDV/config.json
-  - Linux: ~/.mdvconfig
+- Storage: %APPDATA%/MDV/config.json
 
 ## Dependencies Management
-- Primary: CMake FetchContent or Git submodules
-- Secondary: System package managers where appropriate
+- Primary: CMake FetchContent
+- Secondary: vcpkg where appropriate
 - Vendored dependencies when necessary for stability
 
 ## Testing
-- Framework: To be determined
-- Coverage: To be determined
-- CI/CD: To be determined
+- Framework: Catch2
+- Coverage: OpenCppCoverage
+- CI/CD: GitHub Actions (Windows runners)

@@ -1,29 +1,33 @@
 # Current Task Status
 
 ## Current Objectives
-1. Initial project setup and documentation
-2. Prepare development environment for cross-platform C++ development
+1. Tag v0.0.1 for initial Windows development
+2. Set up Windows development environment
+3. Test initial Windows build
 
 ## Context
-Starting from scratch with the following requirements:
-- FLTK for GUI
-- libcurl for downloads
-- Markdown rendering library (cmark-gfm preferred)
-- PDF generation library
-- Compression library for font management
+Moving to direct Windows development. The next phase involves:
+- Setting up Windows development environment
+- Testing Visual Studio 2022 build
+- Verifying FLTK Windows integration
+- Initial Windows performance testing
 
 ## Next Steps
-1. Create techStack.md to document technology choices
-2. Create codebaseSummary.md for project structure
-3. Set up CMake build system
-4. Configure initial FLTK window
+1. Clone repository on Windows machine
+2. Open in Visual Studio 2022
+3. Build initial solution
+4. Test FLTK window creation
+5. Begin Windows-native implementation
 
 ## Related Roadmap Items
 References from projectRoadmap.md:
 - Basic Application Structure
-- Initial project setup
+  - [x] Win32-optimized FLTK setup
+  - [x] MSVC build configuration
+  - [ ] Native Windows menubar
 
 ## Notes
-- FiraMono font is already bundled in the fonts directory
-- Need to decide on specific libraries for Markdown rendering and PDF generation
-- Cross-platform considerations must be kept in mind from the start
+- Development moving to Windows machine
+- Visual Studio 2022 will be primary IDE
+- Initial v0.0.1 tag being created
+- Windows-native development starting
