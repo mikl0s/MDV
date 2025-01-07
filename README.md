@@ -9,7 +9,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-lightgrey)](https://github.com/mikl0s/MDV)
 [![C++](https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B)](https://en.wikipedia.org/wiki/C%2B%2B17)
-[![FLTK](https://img.shields.io/badge/FLTK-1.3.8-orange)](https://www.fltk.org/)
+[![FLTK](https://img.shields.io/badge/FLTK-1.4.1-orange)](https://www.fltk.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/mikl0s/MDV/pulls)
 
 [Features](#features) • [Installation](#installation) • [Usage](#usage) • [Themes](#themes) • [Contributing](#contributing)
@@ -93,7 +93,7 @@ graph TD
 
 - CMake 3.15+
 - C++17 compatible compiler
-- FLTK 1.3.8+
+- FLTK 1.4.1+
 - libcurl
 - cmark-gfm or md4c
 
