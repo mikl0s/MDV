@@ -31,16 +31,17 @@
     - Text and graphics capabilities
 
 ## Build System
-- **CMake**
-  - Purpose: Windows build configuration
+- **CMake with MinGW-w64**
+  - Purpose: Lightweight Windows build configuration
   - Features used:
-    - MSVC integration
+    - MinGW-w64 toolchain
     - External dependency management
     - Installation rules
 
 ## Development Environment
-- Compiler: MSVC
-- Build tools: CMake, Visual Studio or VSCode
+- Compiler: MinGW-w64 GCC
+- Build tools: CMake, MinGW-w64
+- IDE: VSCode (optional)
 - Target: Windows 10/11 x64
 
 ## Configuration
@@ -49,10 +50,10 @@
 
 ## Dependencies Management
 - Primary: CMake FetchContent
-- Secondary: vcpkg where appropriate
+- Secondary: MinGW-w64 packages where available
 - Vendored dependencies when necessary for stability
 
 ## Testing
 - Framework: Catch2
-- Coverage: OpenCppCoverage
+- Coverage: gcov
 - CI/CD: GitHub Actions (Windows runners)

@@ -33,10 +33,6 @@
 ```powershell
 # Download the latest release
 winget install MDV
-
-# Or build from source
-cmake -B build -S . -G "Visual Studio 17 2022"
-cmake --build build --config Release
 ```
 
 ## 🎨 Themes
@@ -79,23 +75,34 @@ graph TD
 
 ### Prerequisites
 
-- Visual Studio 2022 or later
-- CMake 3.15+
-- Windows 10/11 SDK
+1. Install MSYS2 from https://www.msys2.org/
+2. Open MSYS2 and install required packages:
+```bash
+pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake make
+```
+3. Add MinGW-w64 bin directory to your PATH:
+```
+C:\msys64\mingw64\bin
+```
 
 ### Build Steps
 
 1. Clone the repository
-```powershell
-git clone git@github.com:mikl0s/MDV.git
+```bash
+git clone https://github.com/mikl0s/MDV.git
 cd MDV
 ```
 
 2. Configure and build
-```powershell
-cmake -B build -S . -G "Visual Studio 17 2022"
+```bash
+# Configure
+cmake -B build -G "MinGW Makefiles"
+
+# Build
 cmake --build build --config Release
 ```
+
+The executable will be in `build/bin/mdv.exe`
 
 ## 📖 Usage
 

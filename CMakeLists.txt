@@ -8,10 +8,16 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Windows-specific settings
+# Windows-specific settings for MinGW
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 add_definitions(-DWIN32_LEAN_AND_MEAN)
 add_definitions(-DUNICODE -D_UNICODE)  # Unicode support
+
+# MinGW-specific flags
+if(MINGW)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mwindows") # Windows GUI mode
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++") # Static linking
+endif()
 
 # Include FetchContent for dependencies
 include(FetchContent)
@@ -77,7 +83,6 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set_target_properties(mdv PROPERTIES
     OUTPUT_NAME "mdv"
     SUFFIX ".exe"
-    MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"  # Static runtime
 )
 
 # Install rules
