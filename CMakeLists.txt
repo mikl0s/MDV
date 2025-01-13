@@ -5,10 +5,11 @@ project(MDV VERSION 0.1.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Set static linking
-set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++")
+# Full static linking
+set(CMAKE_EXE_LINKER_FLAGS "-static")
 
-# Find wxWidgets
+# Use static wxWidgets
+set(wxWidgets_CONFIG_OPTIONS --static)
 find_package(wxWidgets REQUIRED COMPONENTS core base)
 include(${wxWidgets_USE_FILE})
 
@@ -24,9 +25,10 @@ target_include_directories(mdv PRIVATE
 )
 
 # Add definitions
-add_definitions(-DwxDEBUG_LEVEL=0)
-add_definitions(-DWXWIN_COMPATIBILITY_2_8=0)
-add_definitions(-DwxUSE_PNG=0)
+target_compile_definitions(mdv PRIVATE
+    wxDEBUG_LEVEL=0
+    WXWIN_COMPATIBILITY_2_8=0
+)
 
 # Link libraries
 target_link_libraries(mdv PRIVATE
@@ -35,13 +37,6 @@ target_link_libraries(mdv PRIVATE
 
 # Windows specific settings
 if(WIN32)
-    target_link_libraries(mdv PRIVATE
-        ws2_32
-        comctl32
-        ole32
-    )
-    
-    # Set Windows subsystem
     set_target_properties(mdv PROPERTIES
         WIN32_EXECUTABLE TRUE
     )
