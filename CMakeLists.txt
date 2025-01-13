@@ -6,15 +6,14 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Set static linking
-set(FLTK_USE_STATIC ON)
 set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++")
-set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
 
-# Find FLTK package
-find_package(FLTK REQUIRED)
+# Find wxWidgets
+find_package(wxWidgets REQUIRED COMPONENTS core base)
+include(${wxWidgets_USE_FILE})
 
 # Add executable
-add_executable(mdv
+add_executable(mdv WIN32
     src/main.cpp
     src/gui/MainWindow.cpp
 )
@@ -22,22 +21,16 @@ add_executable(mdv
 # Include directories
 target_include_directories(mdv PRIVATE
     ${CMAKE_SOURCE_DIR}/src
-    ${FLTK_INCLUDE_DIR}
 )
 
-# Link libraries statically
+# Add definitions
+add_definitions(-DwxDEBUG_LEVEL=0)
+add_definitions(-DWXWIN_COMPATIBILITY_2_8=0)
+add_definitions(-DwxUSE_PNG=0)
+
+# Link libraries
 target_link_libraries(mdv PRIVATE
-    -static
-    ${FLTK_LIBRARIES}
-    gdi32
-    comdlg32
-    oleaut32
-    ole32
-    uuid
-    shell32
-    advapi32
-    opengl32
-    gdiplus
+    ${wxWidgets_LIBRARIES}
 )
 
 # Windows specific settings

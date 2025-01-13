@@ -9,7 +9,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/platform-Windows-blue)](https://github.com/mikl0s/MDV)
 [![C++](https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B)](https://en.wikipedia.org/wiki/C%2B%2B17)
-[![FLTK](https://img.shields.io/badge/FLTK-1.4.1-orange)](https://www.fltk.org/)
+[![wxWidgets](https://img.shields.io/badge/wxWidgets-3.0.5-green)](https://www.wxwidgets.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/mikl0s/MDV/pulls)
 
 [Features](#features) • [Installation](#installation) • [Usage](#usage) • [Themes](#themes) • [Contributing](#contributing)
@@ -22,11 +22,11 @@
 
 - 🎯 **Fast as Notepad** - Instant startup, minimal memory usage
 - 🎨 **Windows-native Themes** - Follows your system theme
-- 🔤 **Custom Fonts** - Bundled with FiraMono, use any system font
+- 🔤 **Native Font Integration** - One-click FiraMono installation, use any Windows font
 - 📑 **GitHub Flavored Markdown** - Tables, code blocks, and more
 - 🖨️ **PDF Export** - Generate beautiful PDFs with a click
 - 💡 **Ultra Lightweight** - Smaller than a typical web browser
-- 🪟 **Windows Integration** - Native menus and dialogs
+- 🪟 **Windows Integration** - Native menus, dialogs, and system fonts
 
 ## 🚀 Quick Start
 
@@ -58,16 +58,16 @@ MDV follows your Windows theme settings:
 
 ```mermaid
 graph TD
-    A[Win32 GUI] --> B[Markdown Parser]
+    A[wxWidgets GUI] --> B[Markdown Parser]
     B --> C[Native Renderer]
-    A --> D[Font Manager]
-    D --> E[Windows Font API]
+    A --> D[Windows Font Manager]
+    D --> E[System Font Integration]
     A --> F[PDF Exporter]
     style A fill:#007ACC,color:white
     style B fill:#1E1E1E,color:white
     style C fill:#1E1E1E,color:white
-    style D fill:#1E1E1E,color:white
-    style E fill:#1E1E1E,color:white
+    style D fill:#007ACC,color:white
+    style E fill:#007ACC,color:white
     style F fill:#1E1E1E,color:white
 ```
 
@@ -78,7 +78,7 @@ graph TD
 1. Install MSYS2 from https://www.msys2.org/
 2. Open MSYS2 and install required packages:
 ```bash
-pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake make
+pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-wxWidgets make
 ```
 3. Add MinGW-w64 bin directory to your PATH:
 ```
@@ -110,7 +110,8 @@ The executable will be in `build/bin/mdv.exe`
 2. Open a Markdown file via File → Open or drag & drop
 3. Use the menu to:
    - Switch themes (follows Windows theme)
-   - Change fonts (Settings → Font)
+   - Install FiraMono Nerd Font (Settings → Install FiraMono)
+   - Select system fonts (Settings → Font)
    - Export to PDF (File → Export to PDF)
 
 ## 🤝 Contributing

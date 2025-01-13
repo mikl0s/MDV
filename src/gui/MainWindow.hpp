@@ -1,24 +1,42 @@
 #ifndef MDV_MAIN_WINDOW_HPP
 #define MDV_MAIN_WINDOW_HPP
 
-#include <FL/Fl_Window.H>
-#include <FL/Fl_Text_Display.H>
-#include <memory>
+#include <wx/wx.h>
+#include <wx/textctrl.h>
 
 namespace mdv {
 
-class MainWindow {
+class MainWindow : public wxFrame {
 public:
-    MainWindow(int width = 800, int height = 600);
-    ~MainWindow() = default;
-
-    void show();
-    void hide();
-    bool visible() const;
+    MainWindow();
 
 private:
-    std::unique_ptr<Fl_Window> window_;
-    std::unique_ptr<Fl_Text_Display> display_;
+    // Event handlers
+    void OnOpen(wxCommandEvent& event);
+    void OnExportPDF(wxCommandEvent& event);
+    void OnExit(wxCommandEvent& event);
+    void OnThemeChange(wxCommandEvent& event);
+    void OnFontSelect(wxCommandEvent& event);
+    void OnPreferences(wxCommandEvent& event);
+    void OnAbout(wxCommandEvent& event);
+
+    // Menu creation
+    void CreateMenuBar();
+
+    // Window components
+    wxTextCtrl* display_;
+
+    // Menu IDs
+    enum {
+        ID_Open = wxID_HIGHEST + 1,
+        ID_ExportPDF,
+        ID_ThemeDark,
+        ID_ThemeLight,
+        ID_FontSelect,
+        ID_Preferences
+    };
+
+    wxDECLARE_EVENT_TABLE();
 };
 
 } // namespace mdv

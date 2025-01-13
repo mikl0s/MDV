@@ -1,39 +1,41 @@
 # Current Task Status
 
 ## Current Objectives
-1. Set up initial FLTK window implementation
-2. Test build with MinGW-w64
-3. Verify basic window functionality
+1. Implement Windows-native font management
+2. Create one-click FiraMono Nerd Font installation
+3. Add native font selection dialog
 
 ## Context
-Basic application structure has been recreated with:
-- Fresh src/ directory structure
-- Initial MainWindow implementation
-- Basic CMake configuration
-- FLTK integration setup
+Project has been updated to:
+- Focus exclusively on Windows
+- Use wxWidgets for native UI
+- Integrate with Windows Font Management API
+- Simplify font installation process
 
 ## Next Steps
-1. Install MSYS2 from https://www.msys2.org/
-2. Install required packages:
-   ```bash
-   pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-fltk make
-   ```
-3. Add to PATH: C:\msys64\mingw64\bin
-4. Build the project:
-   ```bash
-   cmake -B build -G "MinGW Makefiles"
-   cmake --build build --config Release
-   ```
-5. Test window creation with build/mdv.exe
+1. Research Windows Font API:
+   - AddFontResource/RemoveFontResource functions
+   - Font installation permissions and requirements
+   - System font enumeration
+2. Create FontManager class:
+   - Download FiraMono Nerd Font directly
+   - Install fonts using Windows API
+   - List system fonts
+   - Handle font selection via native dialog
+3. Update Settings dialog:
+   - Add "Install FiraMono" button
+   - Add font selection button
+   - Save font preferences
 
 ## Related Roadmap Items
 References from projectRoadmap.md:
-- Basic Application Structure
-  - [x] Win32-optimized FLTK setup
-  - [ ] Native Windows menubar
+- Markdown Rendering
+  - [ ] Integration with md4c library
+  - [ ] Read-only display functionality
+  - [ ] Image and badge support
 
 ## Notes
-- Fresh start with clean codebase
-- Focus on minimal, working FLTK implementation
-- Next phase will include md4c integration
-- Build system configured for MinGW-w64
+- Use md4c for GFM-compatible parsing
+- Focus on efficient rendering
+- Implement proper text styling
+- Consider image loading requirements

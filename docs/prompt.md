@@ -7,11 +7,11 @@
 ## 1. Overview
 
 - **Project Name**: **Markdown Viewer (MDV)**
-- **Supported Platforms**: **Windows** and **Linux**  
-- **Goal**:  
-  Build a minimalistic, cross-platform Markdown viewer in C++ using [FLTK](https://www.fltk.org/) as the GUI toolkit.  
-  - Runs on Windows (native or MinGW-w64) and Linux (GCC/Clang).  
-  - Aims for small memory usage and fast startup (akin to a basic system Notepad).  
+- **Supported Platforms**: **Windows**
+- **Goal**:
+  Build a minimalistic Windows Markdown viewer in C++ using [wxWidgets](https://www.wxwidgets.org/) as the GUI toolkit.
+  - Runs on Windows with native look and feel
+  - Aims for small memory usage and fast startup (akin to a basic system Notepad).
   - Renders GitHub Flavored Markdown in a read-only manner.
 
 - **Scope**:  
@@ -26,10 +26,11 @@
 
 ## 2. Libraries & Components
 
-### 2.1 FLTK (GUI)
-- **Purpose**:  
-  - Create windows, menus, dialogs, and handle user interactions (open file, settings, about, etc.).  
-  - Lightweight and fast with minimal dependencies.
+### 2.1 wxWidgets (GUI)
+- **Purpose**:
+  - Create native Windows UI with proper menus, dialogs, and modern look and feel
+  - Handle user interactions (open file, settings, about, etc.)
+  - Provide native file dialogs and system integration
 
 ### 2.2 Markdown Rendering
 - **Candidates**:  
@@ -39,18 +40,14 @@
   - Parse `.md` files into HTML or an internal structure.  
   - Display via a lightweight approach inside FLTK (custom drawing or a small HTML renderer, if available).
 
-### 2.3 libcurl (Downloads)
-- **Purpose**:  
-  - Provide **HTTP** or **HTTPS** download functionality.  
-  - Used to fetch fonts from user-provided URLs (e.g., Nerd Fonts).  
+### 2.3 Windows Font API
+- **Purpose**:
+  - Install fonts directly into Windows
+  - List available system fonts
+  - Handle font installation from downloaded files
+  - Provide native font selection dialog
 
-### 2.4 Unzip/Decompression Library
-- **Examples**: `minizip`, `libarchive`.  
-- **Purpose**:  
-  - Decompress `.zip` or `.tar.gz` fonts that users download.  
-  - Store them in the `fonts/` directory.
-
-### 2.5 PDF Export
+### 2.4 PDF Export
 - **Approach**:  
   - Convert rendered Markdown (text layout + styling) into a PDF document.  
   - **Recommended Libraries**: [libharu](http://libharu.org/), [PoDoFo](https://podofo.sourceforge.net/), or similar.  
@@ -74,14 +71,16 @@
    - **Light Theme** with black text on white background.  
    - Allow user to switch themes in **Settings**.  
    - Apply theme colors to the Markdown render if feasible (or at least background/foreground text).
-
-3. **Font Management**  
-   - **Bundle** FiraMono in `fonts/FiraMono/`.  
-   - **Detect** and **load** fonts from the `fonts/` directory.  
-   - **Download** fonts:
-     1. Use **libcurl** to fetch the file from a user-input URL or a preconfigured list (e.g., Nerd Fonts).  
-     2. **Unzip** the file into `fonts/<FontName>` using `minizip` or `libarchive`.  
-     3. Refresh the in-app font list without requiring an app restart, if possible.  
+3. **Font Management**
+   - **Default Font**: FiraMono Nerd Font with one-click installation
+   - **System Integration**:
+     1. Use Windows Font Management API to install fonts directly into Windows
+     2. List and select from installed system fonts
+     3. Provide direct download and installation of FiraMono Nerd Font
+   - **Font Selection**:
+     1. Use native Windows font dialog for selection
+     2. Remember user's font preference
+     3. Automatic font installation without requiring app restart
    - Provide a **Settings** combo box or list to select the active font.
 
 4. **PDF Export**  

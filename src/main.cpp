@@ -1,7 +1,15 @@
 #include "gui/MainWindow.hpp"
+#include <wx/wx.h>
 
-int main(int argc, char* argv[]) {
-    mdv::MainWindow window;
-    window.show();
-    return 0;
-}
+// Implement the wxWidgets application
+class MDVApp : public wxApp {
+public:
+    virtual bool OnInit() {
+        // Create and show the main window
+        mdv::MainWindow* window = new mdv::MainWindow();
+        window->Show(true);
+        return true;
+    }
+};
+
+wxIMPLEMENT_APP(MDVApp);

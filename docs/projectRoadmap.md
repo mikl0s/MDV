@@ -6,12 +6,13 @@
 - Provide essential features without bloat
 - Enable PDF export functionality
 - Support system and custom fonts
+- Deliver native Windows look and feel
 
 ## Key Features
 - [ ] Basic Application Structure
-  - [x] Win32-optimized FLTK setup
-  - [x] MSVC build configuration
-  - [ ] Native Windows menubar
+  - [ ] wxWidgets setup and configuration
+  - [ ] Native Windows menubar and dialogs
+  - [ ] Modern Windows UI styling
 
 - [ ] Markdown Rendering
   - [ ] Integration with md4c library
@@ -22,11 +23,11 @@
   - [ ] Dark theme implementation (#1E1E1E with #007ACC highlights)
   - [ ] Light theme implementation
   - [ ] Windows theme integration
-
 - [ ] Font Management
-  - [x] Bundle FiraMono font
-  - [ ] Windows font directory scanning
-  - [ ] Font installation in user space
+  - [ ] Windows Font API integration
+  - [ ] One-click FiraMono Nerd Font installation
+  - [ ] Native font selection dialog
+  - [ ] Automatic font installation via Windows API
   - [ ] Dynamic font switching
 
 - [ ] PDF Export
