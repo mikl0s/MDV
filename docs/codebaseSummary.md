@@ -14,50 +14,40 @@ MDV/
 │   └── FiraMono/           # Bundled FiraMono font
 │
 ├── src/                    # Source code
-│   ├── core/              # Core functionality
+│   ├── core/              # Core functionality (pending)
 │   ├── gui/               # Win32-optimized UI components
 │   │   ├── MainWindow.hpp # Main window header
 │   │   └── MainWindow.cpp # Main window implementation
-│   ├── markdown/          # Markdown processing
-│   ├── pdf/               # PDF export functionality
-│   └── utils/             # Windows utility functions
+│   ├── markdown/          # Markdown processing (pending)
+│   ├── pdf/              # PDF export functionality (pending)
+│   └── utils/            # Windows utility functions (pending)
 │
-└── CMakeLists.txt         # MSVC build configuration
+└── CMakeLists.txt         # MinGW-w64 build configuration
 ```
 
 ## Key Components and Their Interactions
 
 ### Core Components
 1. **MainWindow** (gui/)
-   - Win32-optimized FLTK window
-   - Native Windows menubar
-   - Windows theme integration
+   - Basic FLTK window implementation
+   - Text display widget
+   - Window management functions
 
-2. **MarkdownRenderer** (markdown/)
-   - Interfaces with md4c
-   - Fast markdown parsing
-   - Windows-optimized display
-
-3. **FontManager** (utils/)
-   - Windows font directory scanning
-   - User space font installation
-   - System font integration
-
-4. **PDFExporter** (pdf/)
-   - Windows-styled PDF generation
-   - Theme-aware output
-   - Fast export process
-
-5. **ConfigManager** (core/)
-   - Windows registry/AppData config
-   - Windows theme detection
-   - Settings persistence
+Other components pending implementation:
+- MarkdownRenderer (markdown/)
+- FontManager (utils/)
+- PDFExporter (pdf/)
+- ConfigManager (core/)
 
 ## Data Flow
-1. User opens Markdown file → MainWindow → MarkdownRenderer → Display
-2. Theme change → ConfigManager → Windows theme API → Refresh
-3. Font management → FontManager → Windows Font API → Refresh
-4. PDF export → MarkdownRenderer → PDFExporter → Save file
+Initial implementation:
+1. Application start → MainWindow creation → Window display
+
+Pending implementations:
+- Markdown file processing
+- Theme management
+- Font handling
+- PDF export
 
 ## External Dependencies
 - FLTK: Win32-optimized GUI (Integrated)
@@ -65,14 +55,18 @@ MDV/
 - libharu: PDF generation (Pending)
 
 ## Recent Changes
-- Removed cross-platform support
-- Optimized for Windows performance
-- Simplified dependency structure
-- Enhanced Windows integration
-- Streamlined build process
+- Fresh start with clean codebase
+- Basic FLTK window implementation
+- Directory structure setup
+- CMake build system configuration
+- MinGW-w64 toolchain setup
 
 ## Development Status
-Project is being refocused for Windows-only support with emphasis on matching Notepad's performance characteristics. Build system is optimized for MSVC and Windows development.
+Project has been reset with a fresh implementation focusing on:
+- Clean, minimal codebase
+- Windows-optimized FLTK integration
+- Step-by-step feature implementation
+- Performance-first approach
 
 ## User Feedback Integration
-No user feedback yet as project is in Windows optimization phase.
+No user feedback yet as project is in initial implementation phase.

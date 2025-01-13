@@ -1,22 +1,26 @@
-#pragma once
+#ifndef MDV_MAIN_WINDOW_HPP
+#define MDV_MAIN_WINDOW_HPP
 
-#include <FL/Fl.H>
 #include <FL/Fl_Window.H>
-#include <FL/Fl_Menu_Bar.H>
+#include <FL/Fl_Text_Display.H>
 #include <memory>
+
+namespace mdv {
 
 class MainWindow {
 public:
-    MainWindow();
+    MainWindow(int width = 800, int height = 600);
     ~MainWindow() = default;
 
     void show();
-    bool handle_menu(const char* label);
+    void hide();
+    bool visible() const;
 
 private:
-    static void menu_cb(Fl_Widget*, void* v);
-    void setup_menu();
-    
     std::unique_ptr<Fl_Window> window_;
-    Fl_Menu_Bar* menu_bar_;
+    std::unique_ptr<Fl_Text_Display> display_;
 };
+
+} // namespace mdv
+
+#endif // MDV_MAIN_WINDOW_HPP
