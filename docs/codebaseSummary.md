@@ -8,6 +8,7 @@ MDV/
 │   ├── projectRoadmap.md   # Project goals and progress
 │   ├── currentTask.md      # Current development focus
 │   ├── techStack.md        # Technology choices and rationale
+│   ├── knownIssues.md      # Known issues and limitations
 │   └── codebaseSummary.md  # This file
 │
 ├── fonts/                   # Font resources
@@ -15,12 +16,16 @@ MDV/
 │
 ├── src/                    # Source code
 │   ├── core/              # Core functionality (pending)
-│   ├── gui/               # Win32-optimized UI components
-│   │   ├── MainWindow.hpp # Main window header
-│   │   └── MainWindow.cpp # Main window implementation
+│   ├── gui/               # Windows-native UI components
+│   │   ├── MainWindow.hpp    # Main window header
+│   │   ├── MainWindow.cpp    # Main window implementation
+│   │   ├── SettingsDialog.hpp# Settings dialog header
+│   │   └── SettingsDialog.cpp# Settings dialog implementation
 │   ├── markdown/          # Markdown processing (pending)
 │   ├── pdf/              # PDF export functionality (pending)
-│   └── utils/            # Windows utility functions (pending)
+│   └── utils/            # Windows utility functions
+│       ├── FontManager.hpp   # Font management header
+│       └── FontManager.cpp   # Font management implementation
 │
 └── CMakeLists.txt         # MinGW-w64 build configuration
 ```
@@ -29,44 +34,67 @@ MDV/
 
 ### Core Components
 1. **MainWindow** (gui/)
-   - Basic FLTK window implementation
-   - Text display widget
-   - Window management functions
+   - wxWidgets window implementation
+   - Native Windows menus and dialogs
+   - Theme management
+   - File handling
+   - Text display
+
+2. **SettingsDialog** (gui/)
+   - Preferences management
+   - Font installation interface
+   - Theme selection
+   - Configuration persistence
+
+3. **FontManager** (utils/)
+   - Windows Font API integration
+   - FiraMono font installation
+   - System font enumeration
+   - Font selection dialog
 
 Other components pending implementation:
 - MarkdownRenderer (markdown/)
-- FontManager (utils/)
 - PDFExporter (pdf/)
 - ConfigManager (core/)
 
 ## Data Flow
-Initial implementation:
-1. Application start → MainWindow creation → Window display
+Current implementation:
+1. Application start → MainWindow creation
+2. MainWindow loads settings → Applies theme/font
+3. User opens file → Display raw markdown
+4. User changes settings → Persist to registry
 
 Pending implementations:
-- Markdown file processing
-- Theme management
-- Font handling
-- PDF export
+- Markdown parsing and rendering
+- PDF export pipeline
+- Image handling
 
 ## External Dependencies
-- FLTK: Win32-optimized GUI (Integrated)
-- md4c: Lightweight Markdown processing (Pending)
+- wxWidgets: Native Windows GUI (Integrated)
+- md4c: Markdown processing (Pending)
 - libharu: PDF generation (Pending)
 
 ## Recent Changes
-- Fresh start with clean codebase
-- Basic FLTK window implementation
-- Directory structure setup
-- CMake build system configuration
-- MinGW-w64 toolchain setup
+- Switched from FLTK to wxWidgets for better Windows integration
+- Implemented Windows Font API integration
+- Added settings persistence via wxConfig
+- Added dark mode support with DWM integration
+- Created settings dialog
+- Added file opening functionality
+- Implemented theme system
 
 ## Development Status
-Project has been reset with a fresh implementation focusing on:
-- Clean, minimal codebase
-- Windows-optimized FLTK integration
-- Step-by-step feature implementation
-- Performance-first approach
+Project is progressing with:
+- Complete font management system
+- Working theme integration
+- Basic file handling
+- Settings persistence
+- Native Windows look and feel
 
 ## User Feedback Integration
-No user feedback yet as project is in initial implementation phase.
+Current feedback addressed:
+- Improved dark mode integration
+- Added settings dialog
+- Fixed cursor visibility in text display
+- Removed system beep on readonly text
+- Added proper theme inheritance

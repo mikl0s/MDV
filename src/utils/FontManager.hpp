@@ -33,6 +33,6 @@ private:
     // Helper functions
     bool AddFontResource(const std::string& fontPath);
     bool RemoveFontResource(const std::string& fontPath);
-    void NotifyFontChange();
+    bool NotifyFontChange();  // Changed to return bool
     std::string GetFiraMonoPath();
 };

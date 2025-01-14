@@ -1,15 +1,20 @@
-#include "gui/MainWindow.hpp"
+#include "MainWindow.hpp"
 #include <wx/wx.h>
 
-// Implement the wxWidgets application
+namespace mdv {
+
 class MDVApp : public wxApp {
 public:
     virtual bool OnInit() {
-        // Create and show the main window
-        mdv::MainWindow* window = new mdv::MainWindow();
+        if (!wxApp::OnInit())
+            return false;
+
+        MainWindow* window = new MainWindow();
         window->Show(true);
         return true;
     }
 };
 
-wxIMPLEMENT_APP(MDVApp);
+} // namespace mdv
+
+wxIMPLEMENT_APP(mdv::MDVApp);

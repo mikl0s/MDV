@@ -14,59 +14,39 @@
 
 [Features](#features) • [Installation](#installation) • [Usage](#usage) • [Themes](#themes) • [Contributing](#contributing)
 
-<img src="docs/assets/hero.png" alt="MDV Screenshot" width="800"/>
-
 </div>
 
 ## ✨ Features
 
 - 🎯 **Fast as Notepad** - Instant startup, minimal memory usage
-- 🎨 **Windows-native Themes** - Follows your system theme
-- 🔤 **Native Font Integration** - One-click FiraMono installation, use any Windows font
-- 📑 **GitHub Flavored Markdown** - Tables, code blocks, and more
-- 🖨️ **PDF Export** - Generate beautiful PDFs with a click
-- 💡 **Ultra Lightweight** - Smaller than a typical web browser
+- 🎨 **Windows-native Themes** - Dark and light themes that follow your system
+- 🔤 **Native Font Integration** - One-click FiraMono installation, use any system font
+- 📝 **Basic Markdown Support** - View markdown files in a clean, distraction-free interface
 - 🪟 **Windows Integration** - Native menus, dialogs, and system fonts
-
-## 🚀 Quick Start
-
-```powershell
-# Download the latest release
-winget install MDV
-```
+- ⚡ **Ultra Lightweight** - Small executable, minimal dependencies
 
 ## 🎨 Themes
 
-MDV follows your Windows theme settings:
+MDV automatically follows your Windows theme settings:
 
-<div align="center">
-<table>
-<tr>
-<td align="center">
-<strong>Dark Theme (Windows Dark)</strong><br>
-<img src="docs/assets/dark-theme.png" width="400"/>
-</td>
-<td align="center">
-<strong>Light Theme (Windows Light)</strong><br>
-<img src="docs/assets/light-theme.png" width="400"/>
-</td>
-</tr>
-</table>
-</div>
+- Dark theme with #1E1E1E background
+- Light theme with system colors
+- Proper Windows 11 dark mode integration
+- Theme-aware font rendering
 
 ## 🏗️ Architecture
 
 ```mermaid
 graph TD
-    A[wxWidgets GUI] --> B[Markdown Parser]
-    B --> C[Native Renderer]
-    A --> D[Windows Font Manager]
-    D --> E[System Font Integration]
-    A --> F[PDF Exporter]
+    A[wxWidgets GUI] --> B[Text Display]
+    A --> C[Font Manager]
+    C --> D[Windows Font API]
+    A --> E[Theme System]
+    E --> F[Windows DWM]
     style A fill:#007ACC,color:white
     style B fill:#1E1E1E,color:white
-    style C fill:#1E1E1E,color:white
-    style D fill:#007ACC,color:white
+    style C fill:#007ACC,color:white
+    style D fill:#1E1E1E,color:white
     style E fill:#007ACC,color:white
     style F fill:#1E1E1E,color:white
 ```
@@ -78,7 +58,7 @@ graph TD
 1. Install MSYS2 from https://www.msys2.org/
 2. Open MSYS2 and install required packages:
 ```bash
-pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-wxWidgets make
+pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-wxWidgets mingw-w64-x86_64-make
 ```
 3. Add MinGW-w64 bin directory to your PATH:
 ```
@@ -102,17 +82,17 @@ cmake -B build -G "MinGW Makefiles"
 cmake --build build --config Release
 ```
 
-The executable will be in `build/bin/mdv.exe`
+The executable will be in `build/mdv.exe`
 
 ## 📖 Usage
 
 1. Launch MDV
-2. Open a Markdown file via File → Open or drag & drop
+2. Open a Markdown file via File → Open
 3. Use the menu to:
-   - Switch themes (follows Windows theme)
+   - Switch between dark and light themes
    - Install FiraMono Nerd Font (Settings → Install FiraMono)
    - Select system fonts (Settings → Font)
-   - Export to PDF (File → Export to PDF)
+   - Configure preferences (Settings → Preferences)
 
 ## 🤝 Contributing
 
